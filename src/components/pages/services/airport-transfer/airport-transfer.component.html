@@ -127,17 +127,39 @@
           placeholder="Airport Name"
           required
         />
-        <input
-          type="date"
-          formControlName="pickupDate"
-          required
-          placeholder="dd-MM-YYYY"
-        />
-        <input type="time" formControlName="pickupTime" placeholder="hh:MM" />
-        <textarea
-          formControlName="specialRequests"
-          placeholder="Special Requests (optional)"
-        ></textarea>
+        <mat-form-field appearance="fill">
+          <mat-label>Pickup Date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker"
+            formControlName="pickupDate"
+            placeholder="dd-MM-YYYY"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Pickup Time</mat-label>
+          <input
+            matInput
+            type="time"
+            formControlName="pickupTime"
+            placeholder="hh:MM"
+          />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Special Requests</mat-label>
+          <textarea
+            matInput
+            formControlName="specialRequests"
+            placeholder="Special Requests (optional)"
+          ></textarea>
+        </mat-form-field>
 
         <div class="radio-group">
           <p>Is this a return trip?</p>
