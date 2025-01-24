@@ -1,0 +1,12 @@
+{
+  "routes": [
+    "/contact",
+    "/home",
+    "/manage-bookings",
+    "/services",
+    "/services/address-pickup",
+    "/services/airport-transfer",
+    "/services/long-distance",
+    "/services/station-pickup"
+  ]
+}
