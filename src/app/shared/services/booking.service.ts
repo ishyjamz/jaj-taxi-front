@@ -1,14 +1,15 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { AirportBooking } from '../models/airport-booking.model';
-import { Booking } from '../models/booking.model';
+import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
+import { AirportBooking } from "../models/airport-booking.model";
+import { Booking } from "../models/booking.model";
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class BookingService {
-  private apiUrl = 'http://localhost:5189/api/Booking';
+  private apiUrl =
+    "https://jajtaxirugby-babad8d23c4f.herokuapp.com//api/Booking";
 
   constructor(private http: HttpClient) {}
 
@@ -46,7 +47,7 @@ export class BookingService {
   updateBooking(booking: Booking): Observable<Booking> {
     return this.http.put<Booking>(
       `${this.apiUrl}/update/${booking.id}`,
-      booking,
+      booking
     );
   }
 
@@ -54,7 +55,7 @@ export class BookingService {
   updateAirportBooking(booking: AirportBooking): Observable<AirportBooking> {
     return this.http.put<AirportBooking>(
       `${this.apiUrl}/updateAirport/${booking.id}`,
-      booking,
+      booking
     );
   }
 

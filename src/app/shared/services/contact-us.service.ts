@@ -1,13 +1,14 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { ContactUs } from '../models/contact-us.model';
+import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
+import { ContactUs } from "../models/contact-us.model";
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class ContactUsService {
-  private apiUrl = 'http://localhost:5189/api/ContactUs';
+  private apiUrl =
+    "https://jajtaxirugby-babad8d23c4f.herokuapp.com//api/ContactUs";
 
   constructor(private http: HttpClient) {}
 
