@@ -134,6 +134,7 @@
             [matDatepicker]="picker"
             formControlName="pickupDate"
             placeholder="dd-MM-YYYY"
+            required="true"
           />
           <mat-datepicker-toggle
             matSuffix
@@ -149,6 +150,7 @@
             type="time"
             formControlName="pickupTime"
             placeholder="hh:MM"
+            required="true"
           />
         </mat-form-field>
 
@@ -187,10 +189,30 @@
           *ngIf="bookingForm.get('isReturnTrip')?.value"
           class="return-trip-section"
         >
-          <label for="returnDate">Return Date:</label>
-          <input type="date" formControlName="returnDate" />
-          <label for="returnTime">Return Time:</label>
-          <input type="time" formControlName="returnTime" />
+          <mat-form-field appearance="fill">
+            <mat-label>Return Date</mat-label>
+            <input
+              matInput
+              [matDatepicker]="picker"
+              formControlName="returnDate"
+              placeholder="dd-MM-YYYY"
+            />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Return Time</mat-label>
+            <input
+              matInput
+              type="time"
+              formControlName="returnTime"
+              placeholder="hh:MM"
+            />
+          </mat-form-field>
         </div>
 
         <button class="btn btn-primary" type="submit">Submit Booking</button>
