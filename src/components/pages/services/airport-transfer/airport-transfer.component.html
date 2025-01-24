@@ -127,8 +127,13 @@
           placeholder="Airport Name"
           required
         />
-        <input type="date" formControlName="pickupDate" required />
-        <input type="time" formControlName="pickupTime" required />
+        <input
+          type="date"
+          formControlName="pickupDate"
+          required
+          placeholder="dd-MM-YYYY"
+        />
+        <input type="time" formControlName="pickupTime" placeholder="hh:MM" />
         <textarea
           formControlName="specialRequests"
           placeholder="Special Requests (optional)"
