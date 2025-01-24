@@ -9,7 +9,7 @@ import { Booking } from "../models/booking.model";
 })
 export class BookingService {
   private apiUrl =
-    "https://jajtaxirugby-babad8d23c4f.herokuapp.com//api/Booking";
+    "https://jajtaxirugby-babad8d23c4f.herokuapp.com/api/Booking";
 
   constructor(private http: HttpClient) {}
 
