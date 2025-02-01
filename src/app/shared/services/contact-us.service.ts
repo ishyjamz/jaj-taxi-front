@@ -8,7 +8,7 @@ import { ContactUs } from "../models/contact-us.model";
 })
 export class ContactUsService {
   private apiUrl =
-    "https://jajtaxirugby-babad8d23c4f.herokuapp.com//api/ContactUs";
+    "https://jajtaxirugby-babad8d23c4f.herokuapp.com/api/ContactUs";
 
   constructor(private http: HttpClient) {}
 
