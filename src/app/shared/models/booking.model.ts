@@ -1,7 +1,7 @@
-import { Status } from '../enums/status.enum';
+import { Status } from "../enums/status.enum";
 
 export interface Booking {
-  id?: number; // Optional as it will be assigned by the backend
+  id?: any; // Optional as it will be assigned by the backend
   name: string;
   email: string;
   phoneNumber: string;

@@ -1,7 +1,7 @@
-import { Status } from '../enums/status.enum';
+import { Status } from "../enums/status.enum";
 
 export interface AirportBooking {
-  id?: number;
+  id?: any;
   name: string;
   email: string;
   phoneNumber: string;

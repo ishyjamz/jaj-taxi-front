@@ -1,18 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { BookingService } from '../../../app/shared/services/booking.service';
-import { Booking } from '../../../app/shared/models/booking.model';
-import { AirportBooking } from '../../../app/shared/models/airport-booking.model';
-import { Status } from '../../../app/shared/enums/status.enum';
-import { ConfirmModalComponent } from '../../elements/confirm-modal/confirm-modal.component';
-import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Component, OnInit } from "@angular/core";
+import { BookingService } from "../../../app/shared/services/booking.service";
+import { Booking } from "../../../app/shared/models/booking.model";
+import { AirportBooking } from "../../../app/shared/models/airport-booking.model";
+import { Status } from "../../../app/shared/enums/status.enum";
+import { ConfirmModalComponent } from "../../elements/confirm-modal/confirm-modal.component";
+import { CommonModule } from "@angular/common";
+import { HttpClientModule } from "@angular/common/http";
+import { ReactiveFormsModule, FormsModule } from "@angular/forms";
+import { Router } from "@angular/router";
 
 @Component({
-  selector: 'app-booking-management',
-  templateUrl: './booking-management.component.html',
-  styleUrls: ['./booking-management.component.scss'],
+  selector: "app-booking-management",
+  templateUrl: "./booking-management.component.html",
+  styleUrls: ["./booking-management.component.scss"],
   standalone: true,
   providers: [BookingService],
   imports: [
@@ -26,34 +26,34 @@ import { Router } from '@angular/router';
 export class BookingManagementComponent implements OnInit {
   bookings: Booking[] = [];
   airportBookings: AirportBooking[] = [];
-  selectedBookingId?: number;
-  actionType: 'accept' | 'decline' = 'accept';
+  selectedBookingId?: any;
+  actionType: "accept" | "decline" = "accept";
   showModal: boolean = false; // Controls modal visibility
   isAirportModal: boolean = false;
-  modalMessage: string = ''; // Message passed to modal
+  modalMessage: string = ""; // Message passed to modal
 
   // Access control
   hasAccess: boolean = false;
-  private readonly accessKey: string = 'sheema25Aa##'; // Replace with your desired access key
+  private readonly accessKey: string = "sheema25Aa##"; // Replace with your desired access key
 
   constructor(
     private bookingService: BookingService,
-    private router: Router,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     try {
-      if (typeof window !== 'undefined') {
-        const accessKey = prompt('Enter Access Key:');
-        if (accessKey !== 'sheema25Aa##') {
-          alert('Access denied!');
-          this.router.navigate(['/']);
+      if (typeof window !== "undefined") {
+        const accessKey = prompt("Enter Access Key:");
+        if (accessKey !== "sheema25Aa##") {
+          alert("Access denied!");
+          this.router.navigate(["/"]);
         } else {
-          console.log('Access granted.');
+          console.log("Access granted.");
         }
       }
     } catch (error) {
-      console.error('An error occurred while showing the prompt:', error);
+      console.error("An error occurred while showing the prompt:", error);
     }
 
     this.loadBookings();
@@ -71,38 +71,38 @@ export class BookingManagementComponent implements OnInit {
   getStatusText(status: number): string {
     switch (status) {
       case 0:
-        return 'Pending';
+        return "Pending";
       case 1:
-        return 'Accepted';
+        return "Accepted";
       case 2:
-        return 'Declined';
+        return "Declined";
       case 3:
-        return 'Completed';
+        return "Completed";
       default:
-        return 'Unknown';
+        return "Unknown";
     }
   }
 
   // Open confirmation modal
   openConfirmationModal(
-    action: 'accept' | 'decline',
+    action: "accept" | "decline",
     bookingId: number,
-    isAirportModal: boolean,
+    isAirportModal: boolean
   ): void {
     console.log(bookingId);
     this.selectedBookingId = bookingId;
     this.actionType = action;
     this.modalMessage =
-      action === 'accept'
-        ? 'Are you sure you want to accept this booking?'
-        : 'Are you sure you want to decline this booking?';
+      action === "accept"
+        ? "Are you sure you want to accept this booking?"
+        : "Are you sure you want to decline this booking?";
     this.showModal = true;
     this.isAirportModal = isAirportModal;
   }
 
   onAirportModalConfirm(confirmed: boolean): void {
     if (confirmed && this.selectedBookingId !== undefined) {
-      if (this.actionType === 'accept') {
+      if (this.actionType === "accept") {
         this.acceptAirportBooking(this.selectedBookingId);
       } else {
         this.declineAirportBooking(this.selectedBookingId);
@@ -114,7 +114,7 @@ export class BookingManagementComponent implements OnInit {
   // Handle modal confirmation
   onModalConfirm(confirmed: boolean): void {
     if (confirmed && this.selectedBookingId !== undefined) {
-      if (this.actionType === 'accept') {
+      if (this.actionType === "accept") {
         this.acceptBooking(this.selectedBookingId);
       } else {
         this.declineBooking(this.selectedBookingId);
@@ -124,9 +124,9 @@ export class BookingManagementComponent implements OnInit {
   }
 
   // Accept booking method with data reload
-  acceptBooking(bookingId?: number): void {
+  acceptBooking(bookingId?: any): void {
     if (!bookingId) {
-      console.error('Invalid booking ID');
+      console.error("Invalid booking ID");
       return;
     }
 
@@ -139,20 +139,20 @@ export class BookingManagementComponent implements OnInit {
             this.loadBookings(); // Reload the data after accepting
           },
           error: (error) => {
-            console.error('Error updating booking status:', error);
+            console.error("Error updating booking status:", error);
           },
         });
       },
       error: (error) => {
-        console.error('Error fetching booking:', error);
+        console.error("Error fetching booking:", error);
       },
     });
   }
 
   // Accept airport booking method with data reload
-  acceptAirportBooking(bookingId?: number): void {
+  acceptAirportBooking(bookingId?: any): void {
     if (!bookingId) {
-      console.error('Invalid booking ID');
+      console.error("Invalid booking ID");
       return;
     }
 
@@ -165,20 +165,20 @@ export class BookingManagementComponent implements OnInit {
             this.loadBookings(); // Reload the data after accepting
           },
           error: (error) => {
-            console.error('Error updating airport booking status:', error);
+            console.error("Error updating airport booking status:", error);
           },
         });
       },
       error: (error) => {
-        console.error('Error fetching airport booking:', error);
+        console.error("Error fetching airport booking:", error);
       },
     });
   }
 
   // Decline booking method with data reload
-  declineBooking(bookingId?: number): void {
+  declineBooking(bookingId?: any): void {
     if (!bookingId) {
-      console.error('Invalid booking ID');
+      console.error("Invalid booking ID");
       return;
     }
 
@@ -190,30 +190,30 @@ export class BookingManagementComponent implements OnInit {
             this.bookingService.deleteBooking(bookingId).subscribe({
               next: () => {
                 console.log(
-                  `Booking with ID ${bookingId} declined and deleted.`,
+                  `Booking with ID ${bookingId} declined and deleted.`
                 );
                 this.loadBookings(); // Reload the data after declining
               },
               error: (error) => {
-                console.error('Error deleting booking:', error);
+                console.error("Error deleting booking:", error);
               },
             });
           },
           error: (error) => {
-            console.error('Error updating booking status:', error);
+            console.error("Error updating booking status:", error);
           },
         });
       },
       error: (error) => {
-        console.error('Error fetching booking:', error);
+        console.error("Error fetching booking:", error);
       },
     });
   }
 
   // Decline airport booking method with data reload
-  declineAirportBooking(bookingId?: number): void {
+  declineAirportBooking(bookingId?: any): void {
     if (!bookingId) {
-      console.error('Invalid booking ID');
+      console.error("Invalid booking ID");
       return;
     }
 
@@ -225,30 +225,30 @@ export class BookingManagementComponent implements OnInit {
             this.bookingService.deleteAirportBooking(bookingId).subscribe({
               next: () => {
                 console.log(
-                  `Airport booking with ID ${bookingId} declined and deleted.`,
+                  `Airport booking with ID ${bookingId} declined and deleted.`
                 );
                 this.loadBookings(); // Reload the data after declining
               },
               error: (error) => {
-                console.error('Error deleting airport booking:', error);
+                console.error("Error deleting airport booking:", error);
               },
             });
           },
           error: (error) => {
-            console.error('Error updating airport booking status:', error);
+            console.error("Error updating airport booking status:", error);
           },
         });
       },
       error: (error) => {
-        console.error('Error fetching airport booking:', error);
+        console.error("Error fetching airport booking:", error);
       },
     });
   }
 
   // Complete booking method with data reload
-  completeBooking(bookingId?: number): void {
+  completeBooking(bookingId?: any): void {
     if (!bookingId) {
-      console.error('Invalid booking ID');
+      console.error("Invalid booking ID");
       return;
     }
 
@@ -261,20 +261,20 @@ export class BookingManagementComponent implements OnInit {
             this.loadBookings(); // Reload the data after completing
           },
           error: (error) => {
-            console.error('Error updating booking status:', error);
+            console.error("Error updating booking status:", error);
           },
         });
       },
       error: (error) => {
-        console.error('Error fetching booking:', error);
+        console.error("Error fetching booking:", error);
       },
     });
   }
 
   // Complete airport booking method with data reload
-  completeAirportBooking(bookingId?: number): void {
+  completeAirportBooking(bookingId?: any): void {
     if (!bookingId) {
-      console.error('Invalid booking ID');
+      console.error("Invalid booking ID");
       return;
     }
 
@@ -287,12 +287,12 @@ export class BookingManagementComponent implements OnInit {
             this.loadBookings(); // Reload the data after completing
           },
           error: (error) => {
-            console.error('Error updating airport booking status:', error);
+            console.error("Error updating airport booking status:", error);
           },
         });
       },
       error: (error) => {
-        console.error('Error fetching airport booking:', error);
+        console.error("Error fetching airport booking:", error);
       },
     });
   }
