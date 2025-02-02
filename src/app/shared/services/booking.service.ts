@@ -60,12 +60,12 @@ export class BookingService {
   }
 
   // Delete a booking by ID
-  deleteBooking(bookingId: number): Observable<any> {
+  deleteBooking(bookingId: any): Observable<any> {
     return this.http.delete(`${this.apiUrl}/delete/${bookingId}`);
   }
 
   // Delete an airport booking by ID
-  deleteAirportBooking(bookingId: number): Observable<any> {
+  deleteAirportBooking(bookingId: any): Observable<any> {
     return this.http.delete(`${this.apiUrl}/deleteAirport/${bookingId}`);
   }
 }

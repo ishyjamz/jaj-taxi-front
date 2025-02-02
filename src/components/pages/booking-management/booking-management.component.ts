@@ -86,7 +86,7 @@ export class BookingManagementComponent implements OnInit {
   // Open confirmation modal
   openConfirmationModal(
     action: "accept" | "decline",
-    bookingId: number,
+    bookingId: any,
     isAirportModal: boolean
   ): void {
     console.log(bookingId);
