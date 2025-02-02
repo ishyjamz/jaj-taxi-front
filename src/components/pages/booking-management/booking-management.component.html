@@ -53,7 +53,7 @@
               class="accept-button"
               *ngIf="airportBooking.status === 0"
               (click)="
-                openConfirmationModal('accept', airportBooking.id ?? 0, true)
+                openConfirmationModal('accept', airportBooking._id, true)
               "
             >
               Accept
@@ -64,7 +64,7 @@
               class="decline-button"
               *ngIf="airportBooking.status === 0"
               (click)="
-                openConfirmationModal('decline', airportBooking.id ?? 0, true)
+                openConfirmationModal('decline', airportBooking._id, true)
               "
             >
               Decline
@@ -74,7 +74,7 @@
             <button
               class="accept-button"
               *ngIf="airportBooking.status === 1"
-              (click)="completeAirportBooking(airportBooking.id)"
+              (click)="completeAirportBooking(airportBooking._id)"
             >
               Complete
             </button>
@@ -126,7 +126,7 @@
             <button
               class="accept-button"
               *ngIf="booking.status === 0"
-              (click)="openConfirmationModal('accept', booking.id ?? 0, false)"
+              (click)="openConfirmationModal('accept', booking._id ?? 0, false)"
             >
               Accept
             </button>
@@ -135,7 +135,9 @@
             <button
               class="decline-button"
               *ngIf="booking.status === 0"
-              (click)="openConfirmationModal('decline', booking.id ?? 0, false)"
+              (click)="
+                openConfirmationModal('decline', booking._id ?? 0, false)
+              "
             >
               Decline
             </button>
@@ -144,7 +146,7 @@
             <button
               class="accept-button"
               *ngIf="booking.status === 1"
-              (click)="completeBooking(booking.id)"
+              (click)="completeBooking(booking._id)"
             >
               Complete
             </button>

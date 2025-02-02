@@ -46,7 +46,7 @@ export class BookingService {
   // Update a booking
   updateBooking(booking: Booking): Observable<Booking> {
     return this.http.put<Booking>(
-      `${this.apiUrl}/update/${booking.id}`,
+      `${this.apiUrl}/update/${booking._id}`,
       booking
     );
   }
@@ -54,7 +54,7 @@ export class BookingService {
   // Update an airport booking
   updateAirportBooking(booking: AirportBooking): Observable<AirportBooking> {
     return this.http.put<AirportBooking>(
-      `${this.apiUrl}/updateAirport/${booking.id}`,
+      `${this.apiUrl}/updateAirport/${booking._id}`,
       booking
     );
   }
