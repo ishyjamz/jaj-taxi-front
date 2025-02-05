@@ -2,7 +2,7 @@ import { Status } from "../enums/status.enum";
 import { ObjectId } from "./object-id.model";
 
 export interface Booking {
-  _id?: ObjectId; // Optional as it will be assigned by the backend
+  _id?: string; // Optional as it will be assigned by the backend
   name: string;
   email: string;
   phoneNumber: string;

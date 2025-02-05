@@ -2,7 +2,7 @@ import { Status } from "../enums/status.enum";
 import { ObjectId } from "./object-id.model";
 
 export interface AirportBooking {
-  _id?: ObjectId;
+  _id?: string;
   name: string;
   email: string;
   phoneNumber: string;
