@@ -150,7 +150,7 @@ export class BookingManagementComponent implements OnInit {
   }
 
   // Accept airport booking method with data reload
-  acceptAirportBooking(bookingId?: any): void {
+  acceptAirportBooking(bookingId?: string): void {
     if (!bookingId) {
       console.error("Invalid booking ID");
       return;
@@ -176,7 +176,7 @@ export class BookingManagementComponent implements OnInit {
   }
 
   // Decline booking method with data reload
-  declineBooking(bookingId?: any): void {
+  declineBooking(bookingId?: string): void {
     if (!bookingId) {
       console.error("Invalid booking ID");
       return;
@@ -211,7 +211,7 @@ export class BookingManagementComponent implements OnInit {
   }
 
   // Decline airport booking method with data reload
-  declineAirportBooking(bookingId?: any): void {
+  declineAirportBooking(bookingId?: string): void {
     if (!bookingId) {
       console.error("Invalid booking ID");
       return;
@@ -246,7 +246,7 @@ export class BookingManagementComponent implements OnInit {
   }
 
   // Complete booking method with data reload
-  completeBooking(bookingId?: any): void {
+  completeBooking(bookingId?: string): void {
     if (!bookingId) {
       console.error("Invalid booking ID");
       return;
@@ -272,7 +272,7 @@ export class BookingManagementComponent implements OnInit {
   }
 
   // Complete airport booking method with data reload
-  completeAirportBooking(bookingId?: any): void {
+  completeAirportBooking(bookingId?: string): void {
     if (!bookingId) {
       console.error("Invalid booking ID");
       return;
