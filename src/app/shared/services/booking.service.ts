@@ -33,39 +33,39 @@ export class BookingService {
     return this.http.get<AirportBooking[]>(`${this.apiUrl}/getAirport`);
   }
 
-  // Fetch a booking by ID
-  getBookingById(id: number): Observable<Booking> {
+  // Fetch a booking by ID (Fix: ID should be a string)
+  getBookingById(id: string): Observable<Booking> {
     return this.http.get<Booking>(`${this.apiUrl}/get/${id}`);
   }
 
-  // Fetch a booking by ID
-  getAirportBookingById(id: number): Observable<AirportBooking> {
+  // Fetch an airport booking by ID (Fix: ID should be a string)
+  getAirportBookingById(id: string): Observable<AirportBooking> {
     return this.http.get<AirportBooking>(`${this.apiUrl}/getAirport/${id}`);
   }
 
-  // Update a booking
+  // Update a booking (Fix: Use 'Id' instead of 'id' for consistency with .NET DTO)
   updateBooking(booking: Booking): Observable<Booking> {
     return this.http.put<Booking>(
-      `${this.apiUrl}/update/${booking._id}`,
+      `${this.apiUrl}/update/${booking.id}`,
       booking
     );
   }
 
-  // Update an airport booking
+  // Update an airport booking (Fix: Use 'Id' instead of 'id')
   updateAirportBooking(booking: AirportBooking): Observable<AirportBooking> {
     return this.http.put<AirportBooking>(
-      `${this.apiUrl}/updateAirport/${booking._id}`,
+      `${this.apiUrl}/updateAirport/${booking.id}`,
       booking
     );
   }
 
-  // Delete a booking by ID
-  deleteBooking(bookingId: any): Observable<any> {
+  // Delete a booking by ID (Fix: Ensure ID is string)
+  deleteBooking(bookingId: string): Observable<any> {
     return this.http.delete(`${this.apiUrl}/delete/${bookingId}`);
   }
 
-  // Delete an airport booking by ID
-  deleteAirportBooking(bookingId: any): Observable<any> {
+  // Delete an airport booking by ID (Fix: Ensure ID is string)
+  deleteAirportBooking(bookingId: string): Observable<any> {
     return this.http.delete(`${this.apiUrl}/deleteAirport/${bookingId}`);
   }
 }
